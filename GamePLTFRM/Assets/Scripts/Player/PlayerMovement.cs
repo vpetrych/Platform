@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,5 +39,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale= Scaler;
+    }
+
+     void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Respawn")
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
